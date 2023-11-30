@@ -25,9 +25,6 @@ SECRET_KEY = "django-insecure-j^rzzc$6$l47j4s9qpp$x=w4srpf#l86iqjl+p@g(926_o9s13
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -56,13 +53,12 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 ROOT_URLCONF = "mysite.urls"
-
 INTERNAL_IPS = [
     "127.0.0.1",
     "localhost",
 ]
-
 SITE_ID = 1
 
 TEMPLATES = [
