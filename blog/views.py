@@ -9,6 +9,7 @@ from .forms import EmailPostForm, CommentForm, SearchForm
 from django.views.decorators.http import require_POST
 from taggit.models import Tag
 from django.db.models import Count
+from mysite import env
 
 
 def post_list(request, tag_slug=None):
@@ -99,6 +100,9 @@ class PostListView(ListView):
 
 
 def post_share(request, post_id):
+    EMAIL_CONF = env.EMAIL_CONF
+    print("=" * 50)
+    print(EMAIL_CONF)
     post = get_object_or_404(Post, id=post_id, status=Post.Status.PUBLISHED)
 
     sent = False
@@ -111,7 +115,7 @@ def post_share(request, post_id):
                       f"{post.title}"
             message = f"Read {post.title} at {post_url}\n\n" \
                       f"{cd['name']}\'s comments: {cd['comments']}"
-            send_mail(subject, message, 'sat.arepo@yandex.ru',
+            send_mail(subject, message, EMAIL_CONF["DEFAULT_FROM_EMAIL"],
                       [cd['to']])
             sent = True
     else:

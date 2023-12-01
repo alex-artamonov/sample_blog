@@ -111,11 +111,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
 LANGUAGE_CODE = "en-us"
-
-TIME_ZONE = "UTC"
-
+TIME_ZONE = "Europe/Madrid"
 USE_I18N = True
-
 USE_TZ = True
 
 
@@ -128,6 +125,11 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+# EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_HOST = env.EMAIL_CONF['EMAIL_HOST']
+EMAIL_HOST_USER = env.EMAIL_CONF['EMAIL_HOST_USER']
+EMAIL_HOST_PASSWORD = env.EMAIL_CONF['EMAIL_HOST_PASSWORD']
+EMAIL_PORT = env.EMAIL_CONF['EMAIL_PORT']
+EMAIL_USE_SSL = env.EMAIL_CONF['EMAIL_USE_SSL']
 
 TAGGIT_CASE_INSENSITIVE = True

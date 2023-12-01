@@ -71,6 +71,15 @@ input[type=submit] {
     font-size:14px;
     text-transform:uppercase; 
 }
+
+button[type=submit] {
+    font-weight:bold;
+    background:#00abff;
+    color:#fff;
+    padding:10px 20px;
+    font-size:14px;
+    text-transform:uppercase; 
+}
 .errorlist { 
     color:#cc0033;
     float:left;
