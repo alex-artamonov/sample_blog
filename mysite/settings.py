@@ -86,8 +86,8 @@ WSGI_APPLICATION = "mysite.wsgi.application"
 from . import env
 DATABASES = env.DATABASES
 # default_database = environ.get('DJANGO_DATABASE', 'psql')
-# DATABASES['default'] = DATABASES['psql']
-DATABASES['default'] = DATABASES['sqlite']
+DATABASES['default'] = DATABASES['psql']
+# DATABASES['default'] = DATABASES['sqlite']
 
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 

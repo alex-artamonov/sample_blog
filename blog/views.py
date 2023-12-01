@@ -101,8 +101,6 @@ class PostListView(ListView):
 
 def post_share(request, post_id):
     EMAIL_CONF = env.EMAIL_CONF
-    print("=" * 50)
-    print(EMAIL_CONF)
     post = get_object_or_404(Post, id=post_id, status=Post.Status.PUBLISHED)
 
     sent = False
@@ -148,7 +146,9 @@ def post_search(request):
         if form.is_valid():
             query = form.cleaned_data['query']
             # search_vector = SearchVector('title', 'body')
-            search_vector = SearchVector('title', weight='A') + SearchVector('body', weight='B')
+            search_vector = SearchVector('title', weight='A') +\
+                SearchVector('body', weight='A')
+                #SearchVector('body', weight='B') #when weight='B", not working
             search_query = SearchQuery(query)
             results = Post.published.annotate(
                 search=search_vector,
